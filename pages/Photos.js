@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import {Link} from 'react-router-dom'
+import Image from '../components/images'
+import {Context } from '../Context'
+import { getClass } from '../utils';
 
 function Photos() {
+	const {allPhotos} = useContext(Context);
 	return (
 		<main className="photos">
-			<h1>Images go here</h1>
+			{allPhotos.map(( photo , i) => {
+				return (
+					<Image key={photo.id} photo={photo} className={getClass(i)}></Image>
+				)
+			})  
+			}
+		
 		</main>
 	);
 }
